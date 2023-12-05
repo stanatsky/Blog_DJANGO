@@ -12,6 +12,13 @@
 
 <body>
     <h1>Article List</h1>
+    <div class="article">{% for article in articles %}
+        <div class="article">
+            <h2><a href="#">{{article.title}}</a></h2>
+            <p>{{article.body}}</p>
+            <p>{{article.date}}</p>
+        </div>
+    </div>
     <script src="" async defer></script>
 </body>
 
