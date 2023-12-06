@@ -12,7 +12,7 @@ class Article(models.Model):
     slug = models.SlugField()
     body = models.TextField()
     date = models.DateField(auto_now_add=True)
-    # add thumbnail
+    thumb = models.ImageField(default="default.png", upload_to="thumbnails")
     # add author
 
     def __str__(self):
