@@ -1,16 +1,18 @@
 {% extends "base_layout.html" %} {% block content %}
-<h2 class="article-list-title">Article List</h2>
+<h2 class="article-list-title">
+  <u>Discussions</u>
+</h2>
 <p></p>
 <div class="articles">
   {% for article in articles %}
-  <div class="article">
-    <h2>
-      <a href="{% url 'articles:detail' article.slug %}">{{article.title}}</a>
-    </h2>
-    <p>{{article.snippet}}</p>
-    <p>{{article.date}}</p>
-    <p class="author">By {{article.author}}</p>
-  </div>
+  <a href="{% url 'articles:detail' article.slug %}">
+    <div class="article-in-list">
+      <h2>{{article.title}}</h2>
+      <p>{{article.snippet}}</p>
+      <p>{{article.date}}</p>
+      <p class="author">By {{article.author}}</p>
+    </div>
+  </a>
   {% endfor %}
 </div>
 {% endblock %}
