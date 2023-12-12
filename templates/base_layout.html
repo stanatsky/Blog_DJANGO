@@ -12,15 +12,33 @@
 
 <body>
   <div class="wrapper">
-    <h1><a href="{%url 'articles:list'%}">Blogtastic</a></h1>
-    <nav>
+    <h1><a href="{%url 'home'%}">Blogtastic</a></h1>
+    <nav class="NavButtons">
       <ul>
+        {% if user.is_authenticated %}
         <li>
-          <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+          <form
+            class="logout-link"
+            action="{% url 'accounts:logout' %}"
+            method="post"
+          >
             {% csrf_token %}
-            <button type="submit">Logout</button>
+            <button type="submit">
+              <a href="{% url 'accounts:login' %}"></a>Logout
+            </button>
           </form>
         </li>
+        <li>
+          <a href="{% url 'articles:create' %}" class="highlight"
+            >Create Article</a
+          >
+        </li>
+        {% else %}
+
+        <li><a href="{% url 'accounts:login' %}">Login</a></li>
+        <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
+
+        {% endif %}
       </ul>
     </nav>
     {% block content %} {% endblock %}

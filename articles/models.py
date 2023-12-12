@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # to add new field to the model use the following command:
 # python3 manage.py makemigrations
@@ -13,7 +14,7 @@ class Article(models.Model):
     body = models.TextField()
     date = models.DateField(auto_now_add=True)
     thumb = models.ImageField(default="default.png", upload_to="thumbnails")
-    # add author
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
 
     def __str__(self):
         return self.title
